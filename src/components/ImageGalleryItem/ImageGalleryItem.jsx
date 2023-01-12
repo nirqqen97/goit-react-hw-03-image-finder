@@ -1,13 +1,15 @@
-import { Modal } from "../Modal/Modal";
 import { Image, Item } from "./ImageGalleryItem.styled"
 
+export const ImageGalleryItem = ({ material, materialInfo, toggleModal }) => {
+  function handleClick(e) {
+    console.log(material)
+    console.log('toggleModal(): ', toggleModal())
+    return materialInfo(material)
+  }
 
-
-export const ImageGalleryItem = ({material}) =>{
-    function handleCLick(e) {
-        console.log(material.id);
-    }
-    return <Item>
-       <Image onClick={handleCLick} src= {material.webformatURL}/>
-        </Item>
+  return (
+    <Item>
+      <Image onClick={handleClick.bind(this)} src={material.webformatURL} />
+    </Item>
+  )
 }
