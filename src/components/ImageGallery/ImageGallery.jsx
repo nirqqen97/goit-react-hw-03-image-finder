@@ -4,10 +4,6 @@ import { Gallery } from "./ImageGallery.styled"
 
 
 export const ImageGallery = ({materials, materialInfo,toggleModal}) =>{
-    console.log('toggleModal: ', toggleModal);
-    console.log('materialInfo: ', materialInfo);
-    console.log('materials: ', materials);
-    
     return <Gallery>
         {materials.map(material =>{
             return <ImageGalleryItem key={material.id} material = {material} materialInfo = {materialInfo} toggleModal = {toggleModal}/>

@@ -16,12 +16,12 @@ export class Modal extends Component {
     handleKeyDown =  e => {
 
         if (e.code === "Escape") {
-            console.log("closeModal");
+            
             this.props.onClose()
         }    
     }
     onOverlayClick = (e) =>{
-        console.log('click');
+        
         if (e.currentTarget === e.target) {
               this.props.onClose()
             

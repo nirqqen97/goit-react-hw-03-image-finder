@@ -10,7 +10,7 @@ import { Modal } from "./Modal/Modal";
 export class App extends Component  {
   state = {
     page: 1,
-    photos : null,
+    photos : [],
     filter:"",
     showModal : false,
     modalInfo : null,
@@ -22,7 +22,10 @@ export class App extends Component  {
         this.setState({ status:"loading"})
         try {
           const photos = await getPhotos(this.state.filter,this.state.page)
-          this.setState({photos: photos.hits, status:"success"})
+          this.setState({})
+          this.setState(prevState =>({
+            photos:  prevState.photos.concat(photos.hits), status:"success"
+          }))
         } catch (error) {
           this.setState({ status:"error"})
         }
@@ -32,28 +35,21 @@ export class App extends Component  {
   loadMore = () =>{
    this.setState(prevState =>({
      page: prevState.page + 1
-   }))
+     
+   }))   
    
   }
   toggleModal = () =>{
-    console.log("asd");
+    
     this.setState(state =>({
       showModal : !state.showModal
     }))
   }
   handleSubmit =  async text =>{
     this.setState({ 
-      status:"loading",
       filter : text,
-      page:1})
-    try {
-      const photos = await getPhotos(text,this.state.page)
-      console.log('photos: ', photos);
-      this.setState({photos: photos.hits, status:"success"})
-    } catch (error) {
-      this.setState({ status:"error"})
-    }
-
+      page:1,
+    photos:[]})
 
   }
   materialInfo = (info) => {
@@ -89,3 +85,4 @@ export class App extends Component  {
    
   )};
 };
+
