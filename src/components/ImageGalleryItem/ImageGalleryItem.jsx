@@ -3,8 +3,7 @@ import { Image, Item } from "./ImageGalleryItem.styled"
 
 export const ImageGalleryItem = ({ material, materialInfo, toggleModal }) => {
   function handleClick(e) {
-    
-    
+    toggleModal()
     return materialInfo(material)
   }
 
