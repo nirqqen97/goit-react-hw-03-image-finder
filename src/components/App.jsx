@@ -22,7 +22,6 @@ export class App extends Component  {
         this.setState({ status:"loading"})
         try {
           const photos = await getPhotos(this.state.filter,this.state.page)
-          this.setState({})
           this.setState(prevState =>({
             photos:  prevState.photos.concat(photos.hits), status:"success"
           }))
